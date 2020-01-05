@@ -35,13 +35,13 @@ svg#main path {
   fill: none;
 }
 svg#main #robot1 {
-  fill: #033cb8;
+  fill: #e94040;
 }
 svg#main #robot2 {
-  fill: coral;
+  fill: #FF8049;
 }
 svg#main #robot3 {
-  fill: #6af1b9;
+  fill: #7560E0;
 }
 
 form#weights {
@@ -54,9 +54,21 @@ form#weights div {
 }
 form#weights input {
   display: block;
-  width: 100px;
+  width: 75px;
   font-size: 20px;
   font-family: monospace;
+  border-radius: 4px;
+  border: 2px solid;
+  padding: 5px;
+}
+form#weights div.robot1 input {
+  border-color: #e94040;
+}
+form#weights div.robot2 input {
+  border-color: #FF8049;
+}
+form#weights div.robot3 input {
+  border-color: #7560E0;
 }
 
 /*# sourceMappingURL=style.css.map */
