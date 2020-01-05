@@ -9,25 +9,33 @@ body {
     margin: auto;
 }
 
-h1 {
-    margin-bottom: 20px;
+h1 { margin-top: 10px; }
+
+h1.subhead {
+    font-style: italic;
+    color: grey;
+    font-size: 18px;
+    font-weight: normal;
 }
 
+p { margin: 10px 0; }
+
+main { margin-bottom: 20px; }
+
 $color_1: #033cb8;
-$color_2: #218ce4;
+$color_2: coral;
+$color_3: #6af1b9;
 
 svg#main {
     background-color: #eee;
 
     path { fill: none; }
 
-    #robot1 {
-        fill: $color_1;
-    }
+    #robot1 { fill: $color_1; }
 
-    #robot2 {
-        fill: $color_2;
-    }
+    #robot2 { fill: $color_2; }
+
+    #robot3 { fill: $color_3; }
 }
 
 form#weights {

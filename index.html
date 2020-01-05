@@ -8,26 +8,45 @@
 </head>
 <body>
     <h1>Infinite Recharge Climbing Simulator</h1>
+    <h1 class="subhead">Sam Fuchs (236 Alum)</h1>
+
+    <main>
+    <p>
+        This tool accurately simulates the geometry and physics of hanging
+        multiple robots in Infinite Recharge! Set a robot's weight to 0 to
+        remove it from the simulation. Try to keep the angle below 8 degrees!
+        Note that the viz constrains the switch to 14.5 degrees of tilt, but
+        still calculates the equilibrium angle if that constraint were not in place.
+    </p>
 
     <form id="weights" action="">
         <div>
-            <label for="robot_1">Robot 1 weight:</label>
+            <label for="robot_1">Robot 1 weight (lbs):</label>
             <input type="number" name="robot_1" value="140" min="0" max="200">
 
-            <label for="robot_1_d">Robot 1 distance:</label>
+            <label for="robot_1_d">Robot 1 position (in):</label>
             <input type="number" name="robot_1_d" value="-12" min="-55" max="55">
         </div>
 
         <div>
-            <label for="robot_2">Robot 2 weight:</label>
+            <label for="robot_2">Robot 2 weight (lbs):</label>
             <input type="number" name="robot_2" value="140" min="0" max="200">
 
-            <label for="robot_2_d">Robot 2 distance:</label>
+            <label for="robot_2_d">Robot 2 position (in):</label>
             <input type="number" name="robot_2_d" value="12" min="-55" max="55">
+        </div>
+
+        <div>
+            <label for="robot_3">Robot 3 weight (lbs):</label>
+            <input type="number" name="robot_3" value="140" min="0" max="200">
+
+            <label for="robot_3_d">Robot 3 position (in):</label>
+            <input type="number" name="robot_3_d" value="0" min="-55" max="55">
         </div>
     </form>
     <svg id="main"></svg>
     
     <script src="script.js"></script>
+    </main>
 </body>
 </html>
