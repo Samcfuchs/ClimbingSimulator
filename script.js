@@ -2,6 +2,10 @@ const WIDTH = 800;
 const HEIGHT = 550;
 const SCALE = 4;
 
+var svg = d3.select("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", `0 0 ${WIDTH} ${HEIGHT}`)
+
 const in_px = (inches) => inches * SCALE;
 
 const CENTER_OF_MASS_OFFSET_FT = 2;
@@ -23,10 +27,6 @@ const RUNG  = [
 const FLOOR_Y = PIVOT.y + in_px(9*12 + 3.375)
 
 var lineGenerator = d3.line();
-
-var svg = d3.select("svg")
-    .attr("height", HEIGHT)
-    .attr("width", WIDTH);
 
 var pivot = svg.append("circle")
     .attr("cx", PIVOT.x)

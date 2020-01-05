@@ -27,7 +27,7 @@ $color_2: #FF8049;
 $color_3: #7560E0;
 
 svg#main {
-    background-color: #eee;
+
 
     path { fill: none; }
 
@@ -36,6 +36,20 @@ svg#main {
     #robot2 { fill: $color_2; }
 
     #robot3 { fill: $color_3; }
+
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
 }
 
 form#weights {
@@ -43,7 +57,13 @@ form#weights {
     display: flex;
     flex-direction: row;
 
-    div { flex-grow: 1; }
+    & > div {
+        flex-grow: 1;
+        min-width: 150px;
+
+        display: flex;
+        flex-direction: column;
+    }
 
     input {
         display: block;
@@ -59,4 +79,39 @@ form#weights {
     div.robot2 input { border-color: $color_2; }
     div.robot3 input { border-color: $color_3; }
 
+}
+
+@media (max-width: 450px) {
+    form#weights {
+        flex-direction: column;
+
+        & > div {
+            flex-direction: row;
+            
+            & > div { flex-grow: 1; }
+        }
+    }
+
+}
+
+@media (max-width: 800px) {
+    h1, h1.subhead {
+        padding: 0 15px;
+        width: 100vw;
+    }
+
+    main {
+        width: 100vw;
+        padding: 0 15px;
+    }
+
+    p { font-size: 16px; }
+
+    svg#main {
+        width: 100%;
+
+        text {
+            font-size: 50px;
+        }
+    }
 }
