@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swing Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <h1>Infinite Recharge Climbing Simulator</h1>
+    <form id="weights" action="">
+        <div>
+            <label for="robot_1">Robot 1 weight:</label>
+            <input type="number" name="robot_1" value="140" min="0" max="200">
+
+            <label for="robot_1_d">Robot 1 distance:</label>
+            <input type="number" name="robot_1_d" value="1" min="0" max="4.5">
+        </div>
+
+        <div>
+            <label for="robot_2">Robot 2 weight:</label>
+            <input type="number" name="robot_2" value="140" min="0" max="200">
+
+            <label for="robot_2_d">Robot 2 distance:</label>
+            <input type="number" name="robot_2_d" value="1" min="0" max="4.5">
+        </div>
+    </form>
+    <svg id="main"></svg>
+    
+    <script src="script.js"></script>
+</body>
+</html>

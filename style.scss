@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 800px;
+    margin: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+svg#main {
+    background-color: #eee;
+
+    path {
+        fill: none;
+    }
+}
+
+form#weights {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+
+    div {
+        flex-grow: 1;
+    }
+
+    input {
+        display: block;
+        width: 100px;
+        font-size: 20px;
+        font-family: monospace;
+    }
+
+}
