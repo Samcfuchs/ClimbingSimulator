@@ -74,8 +74,8 @@ var text = svg.append("text")
     .text("0°");
 
 function getAngle(m_1, d_1, m_2, d_2) {
-    let numerator = m_2 * d_2 + m_1 * d_1;
-    let denominator = (m_1 * PIVOT_TO_RUNG_FT) + MASS * CENTER_OF_MASS_OFFSET_FT - (m_2 * PIVOT_TO_RUNG_FT);
+    let numerator = (m_1*d_1) + (m_2*d_2);
+    let denominator = (m_1*PIVOT_TO_RUNG_FT) + (m_2*PIVOT_TO_RUNG_FT) + (MASS*CENTER_OF_MASS_OFFSET_FT);
     let theta = Math.atan(numerator / denominator)
     return theta;
 }
