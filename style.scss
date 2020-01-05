@@ -13,11 +13,20 @@ h1 {
     margin-bottom: 20px;
 }
 
+$color_1: #033cb8;
+$color_2: #218ce4;
+
 svg#main {
     background-color: #eee;
 
-    path {
-        fill: none;
+    path { fill: none; }
+
+    #robot1 {
+        fill: $color_1;
+    }
+
+    #robot2 {
+        fill: $color_2;
     }
 }
 

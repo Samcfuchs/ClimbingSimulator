@@ -19,6 +19,12 @@ svg#main {
 svg#main path {
   fill: none;
 }
+svg#main #robot1 {
+  fill: #033cb8;
+}
+svg#main #robot2 {
+  fill: #218ce4;
+}
 
 form#weights {
   margin-bottom: 20px;
