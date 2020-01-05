@@ -50,10 +50,12 @@ var center_of_mass = group.append("circle")
 
 var robot1 = group.append("circle")
     .attr("cy", PIVOT.y + PIVOT_TO_RUNG)
+    .text("1")
     .attr("id", "robot1");
 
 var robot2 = group.append("circle")
     .attr("cy", PIVOT.y + PIVOT_TO_RUNG)
+    .text("2")
     .attr("id", "robot2");
 
 var floor = svg.append("line")
@@ -72,7 +74,7 @@ var text = svg.append("text")
     .text("0°");
 
 function getAngle(m_1, d_1, m_2, d_2) {
-    let numerator = m_2 * d_2 - m_1 * d_1;
+    let numerator = m_2 * d_2 + m_1 * d_1;
     let denominator = (m_1 * PIVOT_TO_RUNG_FT) + MASS * CENTER_OF_MASS_OFFSET_FT - (m_2 * PIVOT_TO_RUNG_FT);
     let theta = Math.atan(numerator / denominator)
     return theta;
@@ -96,15 +98,15 @@ function init() {
     let m2 = d3.select("input[name=robot_2]").node().value;
     let d2 = d3.select("input[name=robot_2_d]").node().value;
 
-    let angle = rad_to_deg(getAngle(m1, d1, m2, d2));
+    let angle = rad_to_deg(getAngle(m1, d1 / 12.0, m2, d2 / 12.0));
     console.log(angle);
     setAngle(angle);
 
     robot1
-        .attr("cx", PIVOT.x - d1 * 12 * SCALE)
+        .attr("cx", PIVOT.x + d1 * SCALE)
         .attr("r", m1 * .1);
     robot2
-        .attr("cx", PIVOT.x + d2 * 12 * SCALE)
+        .attr("cx", PIVOT.x + d2 * SCALE)
         .attr("r", m2 * .1);
 
     text.text(`${Math.abs(angle).toFixed(2)}°`)
@@ -117,15 +119,15 @@ function update() {
     let m2 = d3.select("input[name=robot_2]").node().value;
     let d2 = d3.select("input[name=robot_2_d]").node().value;
 
-    let angle = rad_to_deg(getAngle(m1, d1, m2, d2));
+    let angle = rad_to_deg(getAngle(m1, d1 / 12.0, m2, d2 / 12.0));
     console.log(angle);
     setAngle(angle);
 
     robot1.transition()
-        .attr("cx", PIVOT.x - d1 * 12 * SCALE)
+        .attr("cx", PIVOT.x + d1 * SCALE)
         .attr("r", m1 * .1);
     robot2.transition()
-        .attr("cx", PIVOT.x + d2 * 12 * SCALE)
+        .attr("cx", PIVOT.x + d2 * SCALE)
         .attr("r", m2 * .1);
 
     text.text(`${Math.abs(angle).toFixed(2)}°`)
