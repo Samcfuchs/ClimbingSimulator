@@ -8,3 +8,9 @@ climbs with your alliance, or to help you understand how to build your climber!
 Feel free to contact me with any questions.
 
 ![screenshot](screenshot.png)
+
+## Upcoming Features
+
+- Height displays
+- Drag and drop robot positions
+- Rigid climber simulation

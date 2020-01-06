@@ -8,14 +8,14 @@ var svg = d3.select("svg")
 
 const in_px = (inches) => inches * SCALE;
 
-const CENTER_OF_MASS_OFFSET_FT = 2;
-const CENTER_OF_MASS_OFFSET = in_px(2*12 + 2)
+const CENTER_OF_MASS_OFFSET_FT = 2 + 2/12.0;
+const CENTER_OF_MASS_OFFSET = in_px(2*12 + 2);
 const MASS = 93; // pounds
 const BAR_LENGTH = in_px(9*12 + 6.25);
 const PIVOT_TO_RUNG_FT = 4;
 const PIVOT_TO_RUNG = in_px(PIVOT_TO_RUNG_FT*12);
 
-const MAX_ANG = 14.5
+const MAX_ANG = 14.5;
 
 const PIVOT = {x: WIDTH/2, y: 50}
 const RUNG  = [
