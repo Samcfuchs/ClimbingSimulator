@@ -19,6 +19,9 @@
         still calculates the equilibrium angle if that constraint were not in
         place.
         
+        For a robot rigidly attached to the rung, add a Center of Gravity (CG) offset. 
+        For a robot that pivots at the rung attachment, set the CG offset to 0.
+        
         This project is hosted on
         <a href="https://github.com/samcfuchs/ClimbingSimulator" target="_blank">Github</a>.
     </p>
@@ -33,6 +36,12 @@
                 <label for="robot_1_d">Robot 1 position (in):</label>
                 <input type="number" name="robot_1_d" value="-12" min="-55" max="55">
             </div>
+            
+            <div class="input">
+                <label for="robot_1_h">Robot 1 CG offset (in):</label>
+                <input type="number" name="robot_1_h" value="0" min="0" max="100">
+            </div>
+            
         </div>
 
         <div class="robot2">
@@ -45,6 +54,11 @@
                 <label for="robot_2_d">Robot 2 position (in):</label>
                 <input type="number" name="robot_2_d" value="0" min="-55" max="55">
             </div>
+            
+            <div class="input">
+                <label for="robot_2_h">Robot 2 CG offset (in):</label>
+                <input type="number" name="robot_2_h" value="0" min="0" max="100">
+            </div>
         </div>
 
         <div class="robot3">
@@ -56,6 +70,11 @@
             <div class="input">
                 <label for="robot_3_d">Robot 3 position (in):</label>
                 <input type="number" name="robot_3_d" value="12" min="-55" max="55">
+            </div>
+            
+            <div class="input">
+                <label for="robot_3_h">Robot 3 CG offset (in):</label>
+                <input type="number" name="robot_3_h" value="0" min="0" max="100">
             </div>
         </div>
     </form>
