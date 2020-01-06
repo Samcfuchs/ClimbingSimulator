@@ -111,15 +111,15 @@ function update() {
     setAngle(angle);
 
     robot1.transition()
-        .attr("cy", PIVOT.y + h_1 * SCALE)
+//        .attr("cy", PIVOT.y + h_1 * SCALE)
         .attr("cx", PIVOT.x + d_1 * SCALE)
         .attr("r", m_1 * .1);
     robot2.transition()
-        .attr("cy", PIVOT.y + h_2 * SCALE)
+//        .attr("cy", PIVOT.y + h_2 * SCALE)
         .attr("cx", PIVOT.x + d_2 * SCALE)
         .attr("r", m_2 * .1);
     robot3.transition()
-        .attr("cy", PIVOT.y + h_3 * SCALE)
+//        .attr("cy", PIVOT.y + h_3 * SCALE)
         .attr("cx", PIVOT.x + d_3 * SCALE)
         .attr("r", m_3 * .1);
 
