@@ -9,7 +9,7 @@ var svg = d3.select("svg")
 const in_px = (inches) => inches * SCALE;
 
 const CENTER_OF_MASS_OFFSET_FT = 2 + 2/12.0;
-const CENTER_OF_MASS_OFFSET = in_px(2*12 + 2);
+const CENTER_OF_MASS_OFFSET = in_px(CENTER_OF_MASS_OFFSET_FT*12);
 const MASS = 93; // pounds
 const BAR_LENGTH = in_px(9*12 + 6.25);
 const PIVOT_TO_RUNG_FT = 4;
@@ -49,6 +49,7 @@ var center_of_mass = group.append("circle")
     .attr("r", 5);
 
 var robot1 = group.append("circle")
+    .attr("cx", PIVOT.x + h_1)
     .attr("cy", PIVOT.y + PIVOT_TO_RUNG)
     .text("1")
     .attr("id", "robot1");
@@ -76,9 +77,9 @@ var text = svg.append("text")
     .style("font-size", "30px")
     .text("0°");
 
-function getAngle(m_1, d_1, m_2, d_2, m_3, d_3) {
+function getAngle(m_1, d_1, h_1, m_2, d_2, h_2, m_3, d_3, h_3) {
     let numerator = (m_1*d_1) + (m_2*d_2) + (m_3*d_3);
-    let denominator = (m_1*PIVOT_TO_RUNG_FT) + (m_2*PIVOT_TO_RUNG_FT) + (m_3*PIVOT_TO_RUNG_FT) + (MASS*CENTER_OF_MASS_OFFSET_FT);
+    let denominator = (m_1*(PIVOT_TO_RUNG_FT+h_1)) + (m_2*(PIVOT_TO_RUNG_FT+h_2)) + (m_3*(PIVOT_TO_RUNG_FT+h_3)) + (MASS*CENTER_OF_MASS_OFFSET_FT);
     let theta = Math.atan(numerator / denominator)
     return theta;
 }
@@ -98,21 +99,27 @@ function setAngle(angle) {
 function update() {
     let m_1 = d3.select("input[name=robot_1]").node().value;
     let d_1 = d3.select("input[name=robot_1_d]").node().value;
+    let h_1 = d3.select("input[name=robot_1_h]").node().value;
     let m_2 = d3.select("input[name=robot_2]").node().value;
     let d_2 = d3.select("input[name=robot_2_d]").node().value;
+    let h_2 = d3.select("input[name=robot_2_h]").node().value;
     let m_3 = d3.select("input[name=robot_3]").node().value;
     let d_3 = d3.select("input[name=robot_3_d]").node().value;
+    let h_3 = d3.select("input[name=robot_3_h]").node().value;
 
-    let angle = rad_to_deg(getAngle(m_1, d_1 / 12.0, m_2, d_2 / 12.0, m_3, d_3 / 12.0));
+    let angle = rad_to_deg(getAngle(m_1, d_1 / 12.0, h_1 / 12.0, m_2, d_2 / 12.0, h_2 / 12.0, m_3, d_3 / 12.0, h_3 / 12.0)); //ugly conversion to feet here, required b/c of constants used in getAngle
     setAngle(angle);
 
     robot1.transition()
+        .attr("cy", PIVOT.y + h_1 * SCALE)
         .attr("cx", PIVOT.x + d_1 * SCALE)
         .attr("r", m_1 * .1);
     robot2.transition()
+        .attr("cy", PIVOT.y + h_2 * SCALE)
         .attr("cx", PIVOT.x + d_2 * SCALE)
         .attr("r", m_2 * .1);
     robot3.transition()
+        .attr("cy", PIVOT.y + h_3 * SCALE)
         .attr("cx", PIVOT.x + d_3 * SCALE)
         .attr("r", m_3 * .1);
 
