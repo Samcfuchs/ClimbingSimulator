@@ -90,9 +90,10 @@ var text = svg.append("text")
     .style("font-size", "30px")
     .text("0°");
 
+//GetAngle now uses pixels 
 function getAngle(m_1, d_1, h_1, m_2, d_2, h_2, m_3, d_3, h_3) {
     let numerator = (m_1*d_1) + (m_2*d_2) + (m_3*d_3);
-    let denominator = (m_1*(PIVOT_TO_RUNG_FT+h_1)) + (m_2*(PIVOT_TO_RUNG_FT+h_2)) + (m_3*(PIVOT_TO_RUNG_FT+h_3)) + (MASS*CENTER_OF_MASS_OFFSET_FT);
+    let denominator = (m_1*(PIVOT_TO_RUNG+h_1)) + (m_2*(PIVOT_TO_RUNG+h_2)) + (m_3*(PIVOT_TO_RUNG+h_3)) + (MASS*CENTER_OF_MASS_OFFSET);
     let theta = Math.atan(numerator / denominator)
     return theta;
 }
@@ -110,46 +111,46 @@ function setAngle(angle) {
 }
 
 function update() {
-    let m_1 = d3.select("input[name=robot_1]").node().value;
-    let d_1 = d3.select("input[name=robot_1_d]").node().value;
-    let h_1 = d3.select("input[name=robot_1_h]").node().value;
-    let m_2 = d3.select("input[name=robot_2]").node().value;
-    let d_2 = d3.select("input[name=robot_2_d]").node().value;
-    let h_2 = d3.select("input[name=robot_2_h]").node().value;
-    let m_3 = d3.select("input[name=robot_3]").node().value;
-    let d_3 = d3.select("input[name=robot_3_d]").node().value;
-    let h_3 = d3.select("input[name=robot_3_h]").node().value;
+    let m_1 = in_px(d3.select("input[name=robot_1]").node().value);   //This section natively converts inches to PX
+    let d_1 = in_px(d3.select("input[name=robot_1_d]").node().value);
+    let h_1 = in_px(d3.select("input[name=robot_1_h]").node().value);
+    let m_2 = in_px(d3.select("input[name=robot_2]").node().value);
+    let d_2 = in_px(d3.select("input[name=robot_2_d]").node().value);
+    let h_2 = in_px(d3.select("input[name=robot_2_h]").node().value);
+    let m_3 = in_px(d3.select("input[name=robot_3]").node().value);
+    let d_3 = in_px(d3.select("input[name=robot_3_d]").node().value);
+    let h_3 = in_px(d3.select("input[name=robot_3_h]").node().value);
 
-    let angle = rad_to_deg(getAngle(m_1, d_1 / 12.0, h_1 / 12.0, m_2, d_2 / 12.0, h_2 / 12.0, m_3, d_3 / 12.0, h_3 / 12.0)); //ugly conversion to feet here, required b/c of constants used in getAngle
+    let angle = rad_to_deg(getAngle(m_1, d_1, h_1, m_2, d_2, h_2, m_3, d_3, h_3)); //Const in getAngle uses pixels
     setAngle(angle);
 
     robot1.transition()
-        .attr("cy", PIVOT.y + PIVOT_TO_RUNG + h_1 * SCALE)
-        .attr("cx", PIVOT.x + d_1 * SCALE)
+        .attr("cy", PIVOT.y + PIVOT_TO_RUNG + h_1)
+        .attr("cx", PIVOT.x + d_1)
         .attr("r", m_1 * .1);
     robot2.transition()
-        .attr("cy", PIVOT.y + PIVOT_TO_RUNG + h_2 * SCALE)
-        .attr("cx", PIVOT.x + d_2 * SCALE)
+        .attr("cy", PIVOT.y + PIVOT_TO_RUNG + h_2)
+        .attr("cx", PIVOT.x + d_2)
         .attr("r", m_2 * .1);
     robot3.transition()
-        .attr("cy", PIVOT.y + PIVOT_TO_RUNG + h_3 * SCALE)
-        .attr("cx", PIVOT.x + d_3 * SCALE)
+        .attr("cy", PIVOT.y + PIVOT_TO_RUNG + h_3)
+        .attr("cx", PIVOT.x + d_3)
         .attr("r", m_3 * .1);
 
     hangRobot1.transition()
-        .attr("x1", PIVOT.x + in_px(d_1))
-        .attr("x2", PIVOT.x + in_px(d_1))
-        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + in_px(h_1));
+        .attr("x1", PIVOT.x + d_1)
+        .attr("x2", PIVOT.x + d_1)
+        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + h_1);
 
     hangRobot2.transition()
-        .attr("x1", PIVOT.x + d_2 * SCALE)
-        .attr("x2", PIVOT.x + d_2 * SCALE)
-        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + in_px(h_2));
+        .attr("x1", PIVOT.x + d_2)
+        .attr("x2", PIVOT.x + d_2)
+        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + h_2);
 
     hangRobot3.transition()
-        .attr("x1", PIVOT.x + d_3 * SCALE)
-        .attr("x2", PIVOT.x + d_3 * SCALE)
-        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + in_px(h_3));
+        .attr("x1", PIVOT.x + d_3)
+        .attr("x2", PIVOT.x + d_3)
+        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + h_3);
 
     
     text.text(`${Math.abs(angle).toFixed(2)}°`)
