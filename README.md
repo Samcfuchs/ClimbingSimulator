@@ -13,4 +13,3 @@ Feel free to contact me with any questions.
 
 - Height displays
 - Drag and drop robot positions
-- Rigid climber simulation
