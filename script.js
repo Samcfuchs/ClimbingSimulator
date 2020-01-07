@@ -60,6 +60,21 @@ var robot3 = group.append("circle")
     .text("3")
     .attr("id", "robot3");
 
+var hangRobot1 = group.append("line")
+    .attr("y1", PIVOT.y + PIVOT_TO_RUNG)
+    .attr("stroke", "black")
+    .attr("id", "hangRobot1");
+
+var hangRobot2 = group.append("line")
+    .attr("y1", PIVOT.y + PIVOT_TO_RUNG)
+    .attr("stroke", "black")
+    .attr("id", "hangRobot2");
+
+var hangRobot3 = group.append("line")
+    .attr("y1", PIVOT.y + PIVOT_TO_RUNG)
+    .attr("stroke", "black")
+    .attr("id", "hangRobot3");
+
 var floor = svg.append("line")
     .attr("x1", 0)
     .attr("y1", FLOOR_Y)
@@ -121,6 +136,22 @@ function update() {
         .attr("cx", PIVOT.x + d_3 * SCALE)
         .attr("r", m_3 * .1);
 
+    hangRobot1.transition()
+        .attr("x1", PIVOT.x + in_px(d_1))
+        .attr("x2", PIVOT.x + in_px(d_1))
+        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + in_px(h_1));
+
+    hangRobot2.transition()
+        .attr("x1", PIVOT.x + d_2 * SCALE)
+        .attr("x2", PIVOT.x + d_2 * SCALE)
+        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + in_px(h_2));
+
+    hangRobot3.transition()
+        .attr("x1", PIVOT.x + d_3 * SCALE)
+        .attr("x2", PIVOT.x + d_3 * SCALE)
+        .attr("y2", PIVOT.y + PIVOT_TO_RUNG + in_px(h_3));
+
+    
     text.text(`${Math.abs(angle).toFixed(2)}°`)
         .transition()
             .duration(1000)
