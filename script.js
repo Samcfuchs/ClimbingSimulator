@@ -111,13 +111,13 @@ function setAngle(angle) {
 }
 
 function update() {
-    let m_1 = in_px(d3.select("input[name=robot_1]").node().value);   //This section natively converts inches to PX
-    let d_1 = in_px(d3.select("input[name=robot_1_d]").node().value);
+    let m_1 = d3.select("input[name=robot_1]").node().value;  //masses are not measured in px lol
+    let d_1 = in_px(d3.select("input[name=robot_1_d]").node().value);  //This section natively converts inches to PX
     let h_1 = in_px(d3.select("input[name=robot_1_h]").node().value);
-    let m_2 = in_px(d3.select("input[name=robot_2]").node().value);
+    let m_2 = d3.select("input[name=robot_2]").node().value;
     let d_2 = in_px(d3.select("input[name=robot_2_d]").node().value);
     let h_2 = in_px(d3.select("input[name=robot_2_h]").node().value);
-    let m_3 = in_px(d3.select("input[name=robot_3]").node().value);
+    let m_3 = d3.select("input[name=robot_3]").node().value;
     let d_3 = in_px(d3.select("input[name=robot_3_d]").node().value);
     let h_3 = in_px(d3.select("input[name=robot_3_h]").node().value);
 
