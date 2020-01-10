@@ -48,18 +48,6 @@ var center_of_mass = group.append("circle")
     .attr("stroke", "black")
     .attr("r", 5);
 
-var robot1 = group.append("circle")
-    .text("1")
-    .attr("id", "robot1");
-
-var robot2 = group.append("circle")
-    .text("2")
-    .attr("id", "robot2");
-
-var robot3 = group.append("circle")
-    .text("3")
-    .attr("id", "robot3");
-
 var hangRobot1 = group.append("line")
     .attr("y1", PIVOT.y + PIVOT_TO_RUNG)
     .attr("stroke", "black")
@@ -74,6 +62,18 @@ var hangRobot3 = group.append("line")
     .attr("y1", PIVOT.y + PIVOT_TO_RUNG)
     .attr("stroke", "black")
     .attr("id", "hangRobot3");
+
+var robot1 = group.append("circle")
+    .text("1")
+    .attr("id", "robot1");
+
+var robot2 = group.append("circle")
+    .text("2")
+    .attr("id", "robot2");
+
+var robot3 = group.append("circle")
+    .text("3")
+    .attr("id", "robot3");
 
 var floor = svg.append("line")
     .attr("x1", 0)
